@@ -24,3 +24,6 @@ Inside your project directory, run
 cargo make run
 ```
 This will install all the tools needed, build the project and run a really small and fast web server on port 3000: http://localhost:3000/
+
+## Where to go from here
+For the actual documentation on how *percy* works, visit: https://chinedufn.github.io/percy/
