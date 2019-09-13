@@ -12,14 +12,29 @@ args = [
 ]
 
 [tasks.build]
-dependencies = [ "create-public-dir", "wasm-pack" ]
+dependencies = [ "wasm-pack" ]
 command = "cp"
 args = [
     "index.html",
     "public/"
 ]
 
+[tasks.clean]
+dependencies = [ "cargo-clean", "static-clean" ]
+
+[tasks.cargo-clean]
+private = true
+command = "cargo"
+args = [ "clean" ]
+
+[tasks.static-clean]
+private = true
+command = "rm"
+args = [ "-rf", "public" ]
+
 [tasks.wasm-pack]
+private = true
+dependencies = [ "create-public-dir" ]
 install_crate = { crate_name = "wasm-pack", binary = "wasm-pack", test_arg = ["--version"] }
 command = "wasm-pack"
 args = [
@@ -33,5 +48,6 @@ args = [
 ]
 
 [tasks.create-public-dir]
+private = true
 command = "mkdir"
 args = ["public"]
