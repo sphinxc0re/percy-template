@@ -12,7 +12,7 @@ args = [
 ]
 
 [tasks.build]
-dependencies = [ "wasm-pack" ]
+dependencies = [ "create-public-dir", "wasm-pack" ]
 command = "cp"
 args = [
     "index.html",
@@ -31,3 +31,7 @@ args = [
     "--out-dir",
     "public"
 ]
+
+[tasks.create-public-dir]
+command = "mkdir"
+args = ["public"]
