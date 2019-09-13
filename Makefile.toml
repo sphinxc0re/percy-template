@@ -1,0 +1,33 @@
+[env]
+OUTPUT_CSS = { script = ["echo $(pwd)/public/app.css"] }
+
+[tasks.run]
+install_crate = { crate_name = "microserver", binary = "microserver", test_arg = ["--version"] }
+dependencies = [ "build" ]
+command = "microserver"
+args = [
+    "-p",
+    "3000",
+    "./public"
+]
+
+[tasks.build]
+dependencies = [ "wasm-pack" ]
+command = "cp"
+args = [
+    "index.html",
+    "public/"
+]
+
+[tasks.wasm-pack]
+install_crate = { crate_name = "wasm-pack", binary = "wasm-pack", test_arg = ["--version"] }
+command = "wasm-pack"
+args = [
+    "build",
+    "--no-typescript",
+    "--dev",
+    "--target",
+    "no-modules",
+    "--out-dir",
+    "public"
+]
