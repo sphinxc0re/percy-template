@@ -50,4 +50,4 @@ args = [
 [tasks.create-public-dir]
 private = true
 command = "mkdir"
-args = ["public"]
+args = [ "-p", "public" ]
